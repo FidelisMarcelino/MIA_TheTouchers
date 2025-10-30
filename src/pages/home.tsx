@@ -16,6 +16,9 @@ import {
   EnvironmentOutlined,
 } from "@ant-design/icons";
 
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 const { Header, Content } = Layout;
 const { Title, Text } = Typography;
 
@@ -31,6 +34,7 @@ const cardData = [
     tagColor: "red",
     image:
       "https://images.unsplash.com/photo-1568254183919-78a4f43a2877?ixlib=rb-4.0.3&q=80&w=600&auto=format&fit=crop",
+    clock: "Mon-Fri: 6am-8pm, Sat-Sun: 7am-6pm"
   },
   {
     id: 2,
@@ -42,6 +46,7 @@ const cardData = [
     tagColor: "red",
     image:
       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&q=80&w=600&auto=format&fit=crop",
+    clock: "Mon-Fri: 6am-8pm, Sat-Sun: 7am-6pm"
   },
   {
     id: 3,
@@ -52,7 +57,8 @@ const cardData = [
     tag: "Beverages",
     tagColor: "volcano",
     image:
-      "https://images.unsplash.com/photo-1600096194522-53188b724f5a?ixlib=rb-4.0.3&q=80&w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1543007630-9710e4a00a20?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=735",
+    clock: "Mon-Fri: 6am-8pm, Sat-Sun: 7am-6pm"
   },
   {
     id: 4,
@@ -64,6 +70,7 @@ const cardData = [
     tagColor: "volcano",
     image:
       "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&q=80&w=600&auto=format&fit=crop",
+    clock: "Mon-Fri: 6am-8pm, Sat-Sun: 7am-6pm"
   },
   {
     id: 5,
@@ -74,7 +81,8 @@ const cardData = [
     tag: "Food",
     tagColor: "red",
     image:
-      "https://images.unsplash.com/photo-1571114400290-6d123b32c6c0?ixlib=rb-4.0.3&q=80&w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1756709073651-d82820f62327?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bm9vZGxlJTIwc2hvcHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500",
+    clock: "Mon-Fri: 6am-8pm, Sat-Sun: 7am-6pm"
   },
   {
     id: 6,
@@ -85,12 +93,27 @@ const cardData = [
     tag: "Services",
     tagColor: "blue",
     image:
-      "https://images.unsplash.com/photo-1551882601-e741639f74a0?ixlib=rb-4.0.3&q=80&w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1751651054926-36ea440bb06c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGdvdXJtZXQlMjBjYXRlcmluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500",
+    clock: "Mon-Fri: 6am-8pm, Sat-Sun: 7am-6pm"
   },
 ];
 
-const Home = () => (
-  <Layout>
+const Home = () => {
+  const navigate = useNavigate();
+  const [filter, setFilter] = useState("All");
+  const [search, setSearch] = useState("");
+
+  // Filter Logic
+  const filteredData = cardData.filter((item) => {
+    const matchCategory = filter === "All" || item.tag === filter;
+    const matchSearch = 
+      item.title.toLowerCase().includes(search.toLowerCase()) || 
+      item.description.toLowerCase().includes(search.toLowerCase());
+    return matchCategory && matchSearch
+  })
+
+  return (
+    <Layout>
     <Header
       style={{
         background: "linear-gradient(to right, #812c21, #ac514c)",
@@ -124,10 +147,13 @@ const Home = () => (
             borderRadius: 8,
             border: "none",
           }}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
     </Header>
 
+    {/* Filter Section */}
     <Content style={{ backgroundColor: "#FFFBF2" }}>
       <div
         style={{
@@ -137,7 +163,8 @@ const Home = () => (
         }}
       >
         <Radio.Group
-          defaultValue="All"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
           style={{
             display: "flex",
             gap: 12,
@@ -154,8 +181,8 @@ const Home = () => (
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                backgroundColor: item === "All" ? "#7a2e1c" : "#fff7f2",
-                color: item === "All" ? "#ffffff" : "#7a2e1c",
+                backgroundColor: item === filter ? "#7a2e1c" : "#fff7f2",
+                color: item === filter ? "#ffffff" : "#7a2e1c",
                 fontWeight: 500,
                 height: 45,
               }}
@@ -167,11 +194,17 @@ const Home = () => (
       </div>
 
       <Row gutter={[35, 24]} style={{ padding: "24px 250px" }}>
-        {cardData.map((item) => (
+        {filteredData.map((item) => (
           <Col xs={24} sm={12} lg={8} key={item.id}>
             <Badge.Ribbon text={item.tag} color={item.tagColor}>
               <Card
                 hoverable
+                onClick={() => {
+                  navigate(`/detail/${item.id}`, { 
+                    state: item,
+                    replace: false
+                  });
+                }}
                 cover={
                   <img
                     alt={item.title}
@@ -184,6 +217,7 @@ const Home = () => (
                   borderRadius: 12,
                   overflow: "hidden",
                   boxShadow: "0 4px 16px rgba(0, 0, 0, 0.15)",
+                  cursor: "pointer",
                 }}
               >
                 <Row
@@ -230,5 +264,6 @@ const Home = () => (
     </Content>
   </Layout>
 );
+}
 
 export default Home;

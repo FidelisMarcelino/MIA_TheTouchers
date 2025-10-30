@@ -3,12 +3,12 @@ import type { ThemeConfig } from "antd";
 export const TouchersTheme: ThemeConfig = {
   token: {
     fontFamily: "Arial, sans-serif",
-    colorBgLayout: "#FFFBF2",
+    // colorBgLayout: "#FFFBF2",
   },
   components: {
     Layout: {
-      colorBgHeader: "#6B2B2B",
-      colorPrimary: "#333333",
+      // colorBgHeader: "#6B2B2B",
+      // colorPrimary: "#333333",
     },
     Input: {
       colorBgContainer: "#a96e6e",
