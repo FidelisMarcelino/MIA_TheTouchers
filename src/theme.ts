@@ -10,11 +10,11 @@ export const TouchersTheme: ThemeConfig = {
       // colorBgHeader: "#6B2B2B",
       // colorPrimary: "#333333",
     },
-    Input: {
-      colorBgContainer: "#a96e6e",
-      colorText: "white",
-      colorTextPlaceholder: "rgba(255, 255, 255, 0.85)",
-    },
+    // Input: {
+    //   // colorBgContainer: "#a96e6e",
+    //   colorText: "white",
+    //   colorTextPlaceholder: "rgba(255, 255, 255, 0.85)",
+    // },
     Radio: {
         colorPrimary: "#812c21", // Main brand color for active state
         colorPrimaryHover: "#6a241c",
