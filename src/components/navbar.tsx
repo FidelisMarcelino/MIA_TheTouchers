@@ -51,21 +51,13 @@ const Navbar: React.FC = () => {
                         border: 0
                     }}>Partnership</Button>
                 </Link>
-                <Link to={"/home"}>
+                <Link to={"/register"}>
                     <Button style={{
                         backgroundColor: "transparent",
                         color: "white",
                         fontWeight: "bold",
                         border: 0
                     }}>Register</Button>
-                </Link>
-                <Link to={"/home"}>
-                    <Button style={{
-                        backgroundColor: "transparent",
-                        color: "white",
-                        fontWeight: "bold",
-                        border: 0
-                    }}>Login</Button>
                 </Link>
             </nav>
 

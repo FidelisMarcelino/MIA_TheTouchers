@@ -61,14 +61,14 @@ const cardData = [
   },
   {
     id: 6,
-    title: "Gourmet Catering",
-    description: "Full-service catering for events of all sizes",
-    location: "Chicago",
+    title: "Moregan BarberShop",
+    description: "Gaya rambut yang premium dengan harga yang terjangkau",
+    location: "Jl. Raya Kb. Jeruk No.70A, Palmerah, Kec. Palmerah, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11480",
     rating: 4.9,
     tag: "Services",
     tagColor: "blue",
     image:
-      "https://images.unsplash.com/photo-1751651054926-36ea440bb06c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGdvdXJtZXQlMjBjYXRlcmluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500",
+      "moregan.png",
     clock: "Mon-Fri: 6am-8pm, Sat-Sun: 7am-6pm"
   },
 ];

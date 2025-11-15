@@ -5,18 +5,28 @@ import { TouchersTheme } from "./theme";
 import Detail from "./pages/detail";
 import Community from "./pages/community";
 import Vendor from "./pages/vendor";
+import Login from "./pages/login";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Register from "./pages/register";
+import RegisterVendor from "./pages/registerVendor";
 
+const queryClient = new QueryClient();
 const AppRoutes = () => {
   return (
-    <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/community/" element={<Community />} />
         <Route path="/vendor" element={<Vendor />}></Route>
+        <Route path="/vendor/register" element={<RegisterVendor />}></Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
+    </QueryClientProvider>
   );
 };
 
