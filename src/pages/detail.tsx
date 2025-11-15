@@ -148,8 +148,6 @@ const Detail = () => {
               </div>
             </div>
           </div>
-
-          {/* Row 1 — Carousel + Contact */}
           <Row
             gutter={[32, 32]}
             justify="center"
@@ -188,7 +186,6 @@ const Detail = () => {
                     Contact Information
                   </Title>
                 }
-                bordered
                 style={{
                   width: "100%",
                   boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
