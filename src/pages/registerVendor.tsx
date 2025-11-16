@@ -1,5 +1,10 @@
-import { Layout, Button, Form, Input, InputNumber, Select, Typography} from "antd";
+import { Layout, Button, Form, Input, Select, Typography, Upload} from "antd";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar";
+import { UploadOutlined } from "@ant-design/icons";
+import { useState } from "react";
+import { API } from "../service/api";
+import type { RcFile } from "antd/es/upload";
 const {Content} = Layout;
 const {Title} = Typography;
 
@@ -10,7 +15,28 @@ const tagOptions = [
 ];
 
 const RegisterVendor = () => {
+    const [file, setFile] = useState<RcFile[] | null>([]);
+    const navigate = useNavigate();
     const [form] = Form.useForm();
+    const onSubmit = async (values: any) => {
+        const formData = new FormData();
+        formData.append("name", values.name);
+        formData.append("description", values.description);
+        formData.append("address", values.address);
+        formData.append("category", values.category);
+        formData.append("time", values.time);
+        formData.append("phoneNumber", values.phoneNumber);
+        formData.append("email", values.email);
+        formData.append("website", values.website);
+        if (file) {
+        file?.forEach((file) => {
+            formData.append("files", file);
+        });
+        }
+
+        await API.post("vendor/", formData);
+        navigate("/home");
+    };
     return (
         <Layout>
             <Navbar></Navbar>
@@ -29,10 +55,10 @@ const RegisterVendor = () => {
                 border: "2px solid #E3CFCB" 
             }}
             >
-            <Title level={1} style={{ textAlign: "center", marginBottom: 30 }}>Register Item</Title>
+            <Title level={1} style={{ textAlign: "center", marginBottom: 30 }}>Partnership Registry</Title>
 
-            <Form layout="vertical" form={form}>
-                <Form.Item label="Title" name="title" rules={[{ required: true }]}>
+            <Form layout="vertical" form={form} onFinish={onSubmit}>
+                <Form.Item label="Name" name="name" rules={[{ required: true }]}>
                 <Input placeholder="Mie Pinangsia Amei" />
                 </Form.Item>
 
@@ -45,8 +71,8 @@ const RegisterVendor = () => {
                 </Form.Item>
 
                 <Form.Item
-                label="Location"
-                name="location"
+                label="Address"
+                name="address"
                 rules={[{ required: true }]}
                 >
                 <Input.TextArea
@@ -55,27 +81,31 @@ const RegisterVendor = () => {
                 />
                 </Form.Item>
 
-                <Form.Item label="Tag" name="tag" rules={[{ required: true }]}>
+                <Form.Item label="Category" name="Category" rules={[{ required: true }]}>
                 <Select placeholder="Select tag" options={tagOptions} />
                 </Form.Item>
 
-                <Form.Item
-                label="Image URL"
-                name="image"
-                rules={[{ required: true }]}
-                >
-                <Input placeholder="/pinangsia.png" />
+                <Form.Item label="Image">
+                    <Upload
+                        beforeUpload={(file: RcFile) => {
+                        setFile(prev => [...prev, file]); 
+                        return false;
+                        }}
+                        multiple 
+                    >
+                    <Button icon={<UploadOutlined />}>Upload Image</Button>
+                    </Upload>
                 </Form.Item>
 
                 <Form.Item
                 label="Operating Hours"
-                name="clock"
+                name="time"
                 rules={[{ required: true }]}
                 >
                 <Input placeholder="Mon-Fri: 6am-8pm" />
                 </Form.Item>
 
-                <Form.Item label="Phone" name="phone" rules={[{ required: true }]}>
+                <Form.Item label="Phone" name="phoneNumber" rules={[{ required: true }]}>
                 <Input placeholder="0812xxxx" />
                 </Form.Item>
 

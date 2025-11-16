@@ -2,9 +2,9 @@ import { Card, Form, Input, Button, Typography, Row, Col } from "antd";
 import {  CheckCircleTwoTone } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { API } from "../service/api";
 import type { AxiosError } from "axios";
 import Cookies from "js-cookie";
+import { API } from "../service/api";
 
 const { Title, Text, Link } = Typography;
 
@@ -25,7 +25,7 @@ const Register = () => {
 
   const loginMutation = useMutation({
     mutationFn: (fields: SignupValues) => {
-      return API.post("/register", fields);
+      return API.post("/auth/register", fields);
     },
     onError: (error: unknown) => {
       const serverError = (error as AxiosError).response?.data;

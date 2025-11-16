@@ -47,7 +47,7 @@ const Vendor = () => {
                 </Row>
                 <Row justify={"center"} align={"middle"} style={{width: "100%", height: "auto", padding: "40px 20px", borderBottom: "2px  solid #E3CFCB", flexDirection: "column", gap:"20px"}}>
                         <Text style={{fontSize: "20px", fontWeight: "bold"}}>Register Your Business Now!</Text>
-                        <Link to="/vendor/register">
+                        <Link to="/partnership/register">
                         <Button type="primary" style={{backgroundColor: "#7a2e1c", padding: "20px 20px"}} >Register</Button></Link>
                 </Row>
                 </Content>

@@ -23,7 +23,7 @@ const Login = () => {
 
   const loginMutation = useMutation({
     mutationFn: (fields: LoginValues) => {
-      return API.post("/login", fields);
+      return API.post("/auth/login", fields);
     },
     onError: (error: any) => {
       const serverError = (error as AxiosError).response?.data;

@@ -25,38 +25,38 @@ const cardData = [
   },
   {
     id: 3,
-    title: "Fresh Juice Bar",
-    description: "Cold-pressed juices and smoothie bowls",
-    location: "Los Angeles",
+    title: "Plus Kopi",
+    description: "Menjual berbagai macam minuman kopi yang menyegarkan dan siap menemani waktu nugasmu",
+    location: "Jl. Kyai H. Syahdan No.8",
     rating: 4.7,
     tag: "Beverages",
     tagColor: "volcano",
     image:
-      "https://images.unsplash.com/photo-1543007630-9710e4a00a20?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=735",
+      "/pluskopi.png",
     clock: "Mon-Fri: 6am-8pm, Sat-Sun: 7am-6pm"
   },
   {
     id: 4,
-    title: "The Daily Grind",
+    title: "Senada Coffee",
     description: "Specialty coffee and artisanal espresso drinks",
-    location: "Seattle",
+    location: "RT.6/RW.12, Palmerah, West Jakarta City, Jakarta 11530",
     rating: 4.9,
     tag: "Beverages",
     tagColor: "volcano",
     image:
-      "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&q=80&w=600&auto=format&fit=crop",
-    clock: "Mon-Fri: 6am-8pm, Sat-Sun: 7am-6pm"
+      "/senada.png",
+    clock: "Senin-Minggu: 06:00-23.00"
   },
   {
     id: 5,
-    title: "Noodle House",
-    description: "Hand-pulled noodles and authentic ramen",
-    location: "Tokyo",
+    title: "Seblak Zahera",
+    description: "Seblak prasmanan dengan aneka topping yang melimpah dan siap untuk membakar lidah",
+    location: "Jl. Rw. Belong No.3, RW.6, Sukabumi Utara, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11540",
     rating: 4.7,
     tag: "Food",
     tagColor: "red",
     image:
-      "https://images.unsplash.com/photo-1756709073651-d82820f62327?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bm9vZGxlJTIwc2hvcHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500",
+      "/seblak.png",
     clock: "Mon-Fri: 6am-8pm, Sat-Sun: 7am-6pm"
   },
   {

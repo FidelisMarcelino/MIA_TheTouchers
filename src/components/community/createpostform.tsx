@@ -1,18 +1,29 @@
 import { useState } from "react";
-import { Modal, Button, Form, Input, Grid  } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
-
+import { Modal, Button, Form, Input, Grid, Upload  } from "antd";
+import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
+import { API } from "../../service/api";
+import type { RcFile } from "antd/es/upload";
 const { useBreakpoint } = Grid;
 
 const CreatePostForm = () => {
     const [open, setOpen] = useState(false);
 
     const [form] = Form.useForm();
-
+    const [file, setFile] = useState<RcFile[] | null>(null);
     const screens = useBreakpoint();
     const isMobile = !screens.md;
 
     const handleSubmit = (values) => {
+         const formData = new FormData();
+         formData.append("title", values.title);
+         formData.append("description", values.description);
+         formData.append("address", values.address);
+
+        if(file){
+            formData.append("images", values.images)
+        }
+
+        API.post('/post', formData);
         setOpen(false);
         form.resetFields();
     };
@@ -28,12 +39,18 @@ const CreatePostForm = () => {
       </Button>
 
       <Modal
-        title="Registration Form"
+        title="Create New Post"
         open={open}
         onCancel={() => setOpen(false)}
         footer={null}
         width={isMobile ? "95%" : 400}
         style={{ top: isMobile ? 12 : 40}}
+        modalRender={modal => (
+          <div style={{ backgroundColor: "#E3CFCB", borderRadius: 8 }}>
+            {modal}
+          </div>
+        )}
+        
       >
         <Form
           form={form}
@@ -65,6 +82,17 @@ const CreatePostForm = () => {
           >
             <Input placeholder="Please enter the location's address" />
           </Form.Item>
+
+          <Form.Item label="Image">
+                <Upload
+                beforeUpload={(file) => {
+                    setFile(file);
+                    return false; // prevent auto upload
+                }}
+                >
+                <Button icon={<UploadOutlined />}>Upload Image</Button>
+                </Upload>
+            </Form.Item>
 
           <Form.Item>
                 <Button type="primary" htmlType="submit" block style={{backgroundColor: "#7a2e1c"}}>

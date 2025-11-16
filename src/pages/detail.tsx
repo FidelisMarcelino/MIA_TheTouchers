@@ -22,22 +22,22 @@ import { useState } from "react";
 const { Title, Text } = Typography;
 const { Content } = Layout;
 
-const InteractiveMap = () => (
-  <div
-    style={{
-      background: "#f0f0f0",
-      height: 200,
-      width: "100%",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      border: "1px solid #d9d9d9",
-      borderRadius: 8,
-    }}
-  >
-    Embed Peta Interaktif
-  </div>
-);
+const MapEmbed = ({ address }: { address: string }) => {
+  const encodedAddress = encodeURIComponent(address);
+
+  return (
+    <iframe
+      title="Google Map"
+      width="100%"
+      height="300"
+      style={{ border: 0 }}
+      loading="lazy"
+      allowFullScreen
+      referrerPolicy="no-referrer-when-downgrade"
+      src={`https://maps.google.com/maps?q=${encodedAddress}&output=embed`}
+    ></iframe>
+  );
+};
 
 type ItemType = {
   id: number;
@@ -298,7 +298,7 @@ const Detail = () => {
             </Col>
 
             <Col xs={24} md={10} lg={8}>
-              <InteractiveMap />
+              <MapEmbed address={item.location} />
             </Col>
           </Row>
 

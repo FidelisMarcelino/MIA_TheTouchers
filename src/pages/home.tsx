@@ -49,7 +49,7 @@ const Home = () => {
         style={{
           maxWidth: 1200,
           margin: "0 auto",
-          padding: "40px 10px",
+          padding: "40px 20px",
         }}
       >
         <Title level={1} style={{ color: "black", margin: 0 }}>
