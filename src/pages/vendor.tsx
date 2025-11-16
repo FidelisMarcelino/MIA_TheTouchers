@@ -21,7 +21,7 @@ const Vendor = () => {
                 </Row>
                 <Row style={{width: "100%", height: "auto", padding: "40px 20px", borderBottom: "2px  solid #E3CFCB"}} gutter={[10, 10]}>
                     <Col lg={8} md={12} xs={24}>
-                        <Row justify={"center"} align={"middle"} style={{border: "2px  solid #E3CFCB", padding: "50px 10px", borderRadius: "10px", backgroundColor:"#F0E1D6", color: "#6B2B2B"}}>
+                        <Row justify={"center"} align={"middle"} style={{border: "2px  solid #E3CFCB", padding: "50px 10px", borderRadius: "10px", backgroundColor:"#F0E1D6", color: "#6B2B2B", height:"300px"}}>
                             <SnippetsOutlined style={{fontSize: "72px"}} />
                             <Title level={4} style={{textAlign: "center"}}>
                                 Introduce Your Business to Our Community
@@ -29,7 +29,7 @@ const Vendor = () => {
                         </Row>
                     </Col>
                     <Col lg={8} md={12} xs={24}>
-                        <Row justify={"center"} align={"middle"} style={{border: "2px  solid #E3CFCB", padding: "50px 10px",  borderRadius: "10px", backgroundColor:"#F0E1D6", color: "#6B2B2B"}}>
+                        <Row justify={"center"} align={"middle"} style={{border: "2px  solid #E3CFCB", padding: "50px 10px",  borderRadius: "10px", backgroundColor:"#F0E1D6", color: "#6B2B2B", height:"300px"}}>
                             <SmileOutlined style={{fontSize: "72px"}} />
                             <Title level={4} style={{textAlign: "center"}}>
                                 Receives Meaningful Feedback from Customers 
@@ -37,7 +37,7 @@ const Vendor = () => {
                         </Row>
                     </Col>
                     <Col lg={8} md={12} xs={24}>
-                    <Row justify={"center"} align={"middle"} style={{border: "2px  solid #E3CFCB", padding: "50px 10px",  borderRadius: "10px", backgroundColor:"#F0E1D6", color: "#6B2B2B"}}>
+                    <Row justify={"center"} align={"middle"} style={{border: "2px  solid #E3CFCB", padding: "50px 10px",  borderRadius: "10px", backgroundColor:"#F0E1D6", color: "#6B2B2B", height:"300px"}}>
                             <CommentOutlined style={{fontSize: "72px"}} />
                             <Title level={4} style={{textAlign: "center"}}>
                                 Communicate with Your Potential Customers
